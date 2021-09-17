@@ -1,0 +1,48 @@
+// Verification for one dimentional array memory address formula to access i'th element in a array
+
+#include <stdio.h>
+
+int main() {
+    // Making a array
+    int alpha[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+    // Printing Address of all stored elements with their values.
+    for(int k= 0; k<10; k++){
+        // & operator pints the memory address of element
+        printf("alpha[%d] Memory Address: %d :: Value: %d\n", k, &alpha[k], alpha[k]);
+    }
+
+    // base denotes the bash address of array (in this case memory address of alpha[0])
+    int base = &alpha[0];
+    printf("base: %d\n", base);
+
+    // S is the Size of each location. Like for int type the Size of each location in 4 (not the size of whole array, instead single element).
+    int S = sizeof(alpha[0]);
+    printf("S: %d\n", S);
+
+    // i denoted the index from which we need value
+    int i = 3;
+
+    // lb is the lower bound. since here the indexing starts from 0, so lower bound will be 0
+    int lb = 0;
+
+    // location_in_memory represents the formula to get memory address of alpha[i] element. by using 'base' and 's'
+    int location_in_memory = base + (i-lb)* S;
+    printf("location_in_memory of required value [by formula]: %d\n", location_in_memory);
+
+    // making a pointer which will then store the reference of data, we are providing reference via location_in_memory, then printing value found at that address
+    int* valueFoundByUsingFormula = (int *)(location_in_memory);
+    printf("value Found By Using Formula: %d\n", *valueFoundByUsingFormula);
+
+    // printing the address of alpha[i] element for verification.
+    printf("Memory Address of alpha[i]: %d\n", &alpha[i]);
+
+    // Here we are first getting memory address of alpha[i] or (alpha[3] in this case) and then printing its value by using pointers.
+    int* valueByAlpha = (int *)(&alpha[i]);
+    printf("Value formed by alpha[i] Memory Address: %d\n", *valueByAlpha);
+
+    printf("This proved the Formula: BA + (i + lb)* S");
+
+
+    return 0;
+}
