@@ -1,2 +1,3 @@
-# dsa-2021
-Data Structures and Algorithms
+# Data Structures and Algorithms
+`Concepts by examples`
+## By MrHacktivist
